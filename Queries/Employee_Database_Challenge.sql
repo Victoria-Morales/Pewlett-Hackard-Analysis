@@ -53,5 +53,21 @@ ON (e.emp_no = tl.emp_no)
 WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 	AND (de.to_date = '9999-01-01')
 ORDER BY e.emp_no;
-	
 
+
+
+-- Additional queries/tables for summary questions part 3 deliverable
+-- Obtain count of mentorship eligible employees
+SELECT
+   COUNT(me.title)
+FROM
+	unique_titles as me;
+
+SELECT * FROM unique_titles;
+
+-- Create table with mentorship eligibility by title
+SELECT COUNT (me.title), me.title
+INTO mentorship_count
+FROM mentorship_eligibility as me
+GROUP BY me.title
+ORDER BY COUNT DESC;
